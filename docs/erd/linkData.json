@@ -2,7 +2,7 @@
     {
         "from": "comments",
         "to": "users",
-        "text": "1..1\nBT",
+        "fromText": "1..1\nBT",
         "toText": "",
         "fromPort": "author_id",
         "toPort": "id",
@@ -11,7 +11,7 @@
     {
         "from": "comments",
         "to": "posts",
-        "text": "1..1\nBT",
+        "fromText": "1..1\nBT",
         "toText": "",
         "fromPort": "post_id",
         "toPort": "id",
@@ -20,7 +20,7 @@
     {
         "from": "comments",
         "to": "likes",
-        "text": "1..N\nMM",
+        "fromText": "1..N\nMM",
         "toText": "",
         "fromPort": "id",
         "toPort": "likeable_id",
@@ -29,7 +29,7 @@
     {
         "from": "likes",
         "to": "likes",
-        "text": "1..1\nMT",
+        "fromText": "1..1\nMT",
         "toText": "",
         "fromPort": "id",
         "toPort": "likeable_id",
@@ -38,7 +38,7 @@
     {
         "from": "likes",
         "to": "users",
-        "text": "1..1\nBT",
+        "fromText": "1..1\nBT",
         "toText": "",
         "fromPort": "author_id",
         "toPort": "id",
@@ -47,7 +47,7 @@
     {
         "from": "media_libraries",
         "to": "media",
-        "text": "1..N\nMM",
+        "fromText": "1..N\nMM",
         "toText": "",
         "fromPort": "id",
         "toPort": "model_id",
@@ -56,7 +56,7 @@
     {
         "from": "posts",
         "to": "users",
-        "text": "1..1\nBT",
+        "fromText": "1..1\nBT",
         "toText": "",
         "fromPort": "author_id",
         "toPort": "id",
@@ -65,7 +65,7 @@
     {
         "from": "posts",
         "to": "media",
-        "text": "1..1\nBT",
+        "fromText": "1..1\nBT",
         "toText": "",
         "fromPort": "thumbnail_id",
         "toPort": "id",
@@ -74,7 +74,7 @@
     {
         "from": "posts",
         "to": "comments",
-        "text": "1..N\nHM",
+        "fromText": "1..N\nHM",
         "toText": "",
         "fromPort": "id",
         "toPort": "post_id",
@@ -83,7 +83,7 @@
     {
         "from": "posts",
         "to": "likes",
-        "text": "1..N\nMM",
+        "fromText": "1..N\nMM",
         "toText": "",
         "fromPort": "id",
         "toPort": "likeable_id",
@@ -92,7 +92,7 @@
     {
         "from": "users",
         "to": "posts",
-        "text": "1..N\nHM",
+        "fromText": "1..N\nHM",
         "toText": "",
         "fromPort": "id",
         "toPort": "author_id",
@@ -101,7 +101,7 @@
     {
         "from": "users",
         "to": "comments",
-        "text": "1..N\nHM",
+        "fromText": "1..N\nHM",
         "toText": "",
         "fromPort": "id",
         "toPort": "author_id",
@@ -110,7 +110,7 @@
     {
         "from": "users",
         "to": "likes",
-        "text": "1..N\nHM",
+        "fromText": "1..N\nHM",
         "toText": "",
         "fromPort": "id",
         "toPort": "author_id",
@@ -119,7 +119,7 @@
     {
         "from": "users",
         "to": "notifications",
-        "text": "1..N\nMM",
+        "fromText": "1..N\nMM",
         "toText": "",
         "fromPort": "id",
         "toPort": "notifiable_id",
@@ -128,7 +128,7 @@
     {
         "from": "users",
         "to": "notifications",
-        "text": "1..N\nMM",
+        "fromText": "1..N\nMM",
         "toText": "",
         "fromPort": "id",
         "toPort": "notifiable_id",
@@ -137,7 +137,7 @@
     {
         "from": "users",
         "to": "notifications",
-        "text": "1..N\nMM",
+        "fromText": "1..N\nMM",
         "toText": "",
         "fromPort": "id",
         "toPort": "notifiable_id",

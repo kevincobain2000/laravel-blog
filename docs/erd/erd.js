@@ -163,7 +163,7 @@ function init() {
                   fromLinkable: true,
                   toLinkable: true
               },
-              new go.Binding("text", "text")),
+              new go.Binding("text", "fromText")),
 
           $(go.TextBlock, // the "to" label
               {

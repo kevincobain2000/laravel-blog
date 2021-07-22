@@ -121,7 +121,7 @@ class ERD extends Command
                 $linkDataArray[] = [
                     "from"   => $fromTable,
                     "to"     => $toTable,
-                    "text"   => $this->getFromText($relationship),
+                    "fromText"   => $this->getFromText($relationship),
                     "toText" => $this->getToText($relationship),
                     "fromPort"  =>  $fromPort,
                     "toPort"  => $toPort,
