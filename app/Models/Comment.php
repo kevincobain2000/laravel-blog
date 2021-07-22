@@ -11,7 +11,6 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class Comment extends Model
 {
     use HasFactory, Likeable;
-    use RelationshipsTrait;
 
     /**
      * The attributes that are mass assignable.

@@ -10,7 +10,6 @@ use Spatie\MediaLibrary\MediaCollections\Models\Media;
 class MediaLibrary extends Model implements HasMedia
 {
     use InteractsWithMedia;
-    use RelationshipsTrait;
 
     public function registerMediaConversions(Media $media = null): void
     {

@@ -14,7 +14,6 @@ use Illuminate\Support\Str;
 class User extends Authenticatable implements MustVerifyEmail
 {
     use HasFactory, Notifiable;
-    use RelationshipsTrait;
 
     /**
      * The attributes that are mass assignable.

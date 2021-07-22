@@ -7,6 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\File;
 use Schema;
 use ReflectionClass;
+use ReflectionMethod;
+use Throwable;
+use Exception;
+use TypeError;
+use Illuminate\Database\Eloquent\Relations\Relation;
 
 class ERD extends Command
 {
@@ -97,7 +102,7 @@ class ERD extends Command
             ];
 
             try {
-                $relationships = app($model)->relationships();
+                $relationships = $this->getRelationships(app($model));
             } catch (\Throwable $th) {
                 throw $th;
             }
@@ -176,5 +181,40 @@ class ERD extends Command
                 break;
         }
         return $text;
+    }
+
+    public function getRelationships($model)
+    {
+        $relationships = [];
+        $model = new $model;
+
+        foreach ((new ReflectionClass($model))->getMethods(ReflectionMethod::IS_PUBLIC) as $method) {
+            if ($method->class != get_class($model) ||
+                !empty($method->getParameters()) ||
+                $method->getName() == __FUNCTION__) {
+                continue;
+            }
+
+            try {
+                $return = $method->invoke($model);
+                if ($return instanceof Relation) {
+                    $relationType = (new ReflectionClass($return))->getShortName();
+                    $modelName = (new ReflectionClass($return->getRelated()))->getName();
+
+                    $foreignKey = $return->getQualifiedForeignKeyName();
+                    $parentKey = $return->getQualifiedParentKeyName();
+                    $relationships[$method->getName()] = [
+                        'type'        => $relationType,
+                        'model'       => $modelName,
+                        'foreign_key' => $foreignKey,
+                        'parent_key'  => $parentKey,
+                    ];
+                }
+            } catch (Throwable $e) {
+                //ignore
+            }
+        }
+
+        return $relationships;
     }
 }

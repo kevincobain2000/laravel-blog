@@ -8,7 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class NewsletterSubscription extends Model
 {
     use HasFactory;
-    use RelationshipsTrait;
 
     /**
      * The attributes that are mass assignable.
