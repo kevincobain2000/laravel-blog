@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Role extends Model
 {
     use HasFactory;
+    use RelationshipsTrait;
 
     const ROLE_ADMIN = 'admin';
     const ROLE_EDITOR = 'editor';

@@ -1,0 +1,146 @@
+[
+    {
+        "from": "comments",
+        "to": "users",
+        "text": "1..1\nBT",
+        "toText": "",
+        "fromPort": "author_id",
+        "toPort": "id",
+        "type": "BelongsTo"
+    },
+    {
+        "from": "comments",
+        "to": "posts",
+        "text": "1..1\nBT",
+        "toText": "",
+        "fromPort": "post_id",
+        "toPort": "id",
+        "type": "BelongsTo"
+    },
+    {
+        "from": "comments",
+        "to": "likes",
+        "text": "1..N\nMM",
+        "toText": "",
+        "fromPort": "id",
+        "toPort": "likeable_id",
+        "type": "MorphMany"
+    },
+    {
+        "from": "likes",
+        "to": "likes",
+        "text": "1..1\nMT",
+        "toText": "",
+        "fromPort": "id",
+        "toPort": "likeable_id",
+        "type": "MorphTo"
+    },
+    {
+        "from": "likes",
+        "to": "users",
+        "text": "1..1\nBT",
+        "toText": "",
+        "fromPort": "author_id",
+        "toPort": "id",
+        "type": "BelongsTo"
+    },
+    {
+        "from": "media_libraries",
+        "to": "media",
+        "text": "1..N\nMM",
+        "toText": "",
+        "fromPort": "id",
+        "toPort": "model_id",
+        "type": "MorphMany"
+    },
+    {
+        "from": "posts",
+        "to": "users",
+        "text": "1..1\nBT",
+        "toText": "",
+        "fromPort": "author_id",
+        "toPort": "id",
+        "type": "BelongsTo"
+    },
+    {
+        "from": "posts",
+        "to": "media",
+        "text": "1..1\nBT",
+        "toText": "",
+        "fromPort": "thumbnail_id",
+        "toPort": "id",
+        "type": "BelongsTo"
+    },
+    {
+        "from": "posts",
+        "to": "comments",
+        "text": "1..N\nHM",
+        "toText": "",
+        "fromPort": "id",
+        "toPort": "post_id",
+        "type": "HasMany"
+    },
+    {
+        "from": "posts",
+        "to": "likes",
+        "text": "1..N\nMM",
+        "toText": "",
+        "fromPort": "id",
+        "toPort": "likeable_id",
+        "type": "MorphMany"
+    },
+    {
+        "from": "users",
+        "to": "posts",
+        "text": "1..N\nHM",
+        "toText": "",
+        "fromPort": "id",
+        "toPort": "author_id",
+        "type": "HasMany"
+    },
+    {
+        "from": "users",
+        "to": "comments",
+        "text": "1..N\nHM",
+        "toText": "",
+        "fromPort": "id",
+        "toPort": "author_id",
+        "type": "HasMany"
+    },
+    {
+        "from": "users",
+        "to": "likes",
+        "text": "1..N\nHM",
+        "toText": "",
+        "fromPort": "id",
+        "toPort": "author_id",
+        "type": "HasMany"
+    },
+    {
+        "from": "users",
+        "to": "notifications",
+        "text": "1..N\nMM",
+        "toText": "",
+        "fromPort": "id",
+        "toPort": "notifiable_id",
+        "type": "MorphMany"
+    },
+    {
+        "from": "users",
+        "to": "notifications",
+        "text": "1..N\nMM",
+        "toText": "",
+        "fromPort": "id",
+        "toPort": "notifiable_id",
+        "type": "MorphMany"
+    },
+    {
+        "from": "users",
+        "to": "notifications",
+        "text": "1..N\nMM",
+        "toText": "",
+        "fromPort": "id",
+        "toPort": "notifiable_id",
+        "type": "MorphMany"
+    }
+]

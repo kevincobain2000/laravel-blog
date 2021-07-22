@@ -7,6 +7,7 @@ use Illuminate\Support\Str;
 
 class Token extends Model
 {
+    use RelationshipsTrait;
     /**
      * Return a unique personnal access token.
      */
