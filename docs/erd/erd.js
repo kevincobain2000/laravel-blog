@@ -1,3 +1,10 @@
+
+/* eslint-disable */
+
+var nodeDataArray = [];
+var linkDataArray = [];
+var nodeDataArray = [];
+var linkDataArray = [];
 function init() {
   var $ = go.GraphObject.make; // for conciseness in defining templates
 
@@ -9,22 +16,6 @@ function init() {
               layout: $(go.ForceDirectedLayout),
               "undoManager.isEnabled": true
           });
-
-  // the template for each attribute in a node's array of item data
-  // var itemTempl =
-  // $(go.Panel, "Horizontal",
-  //     $(go.Shape,
-  //     { desiredSize: new go.Size(15, 15), strokeJoin: "round", strokeWidth: 3, stroke: null, margin: 2 },
-  //     new go.Binding("figure", "figure"),
-  //     new go.Binding("fill", "color"),
-  //     new go.Binding("stroke", "color")),
-  //     $(go.TextBlock,
-  //     {
-  //         stroke: "#333333",
-  //         font: "bold 14px sans-serif"
-  //     },
-  //     new go.Binding("text", "name"))
-  // );
 
   var itemTempl =
       $(go.Panel, "Horizontal", // this Panel is a row in the containing Table
@@ -53,7 +44,7 @@ function init() {
           $(go.TextBlock, {
                   margin: new go.Margin(0, 5),
                   column: 1,
-                  font: "bold 13px sans-serif",
+                  font: "13px sans-serif",
                   alignment: go.Spot.Left,
                   // and disallow drawing links from or to this text:
                   fromLinkable: false,
@@ -127,7 +118,7 @@ function init() {
                       stretch: go.GraphObject.Horizontal,
                       itemTemplate: itemTempl,
                   },
-                  new go.Binding("itemArray", "items"))
+                  new go.Binding("itemArray", "schema"))
           ) // end Table Panel
       ); // end Node
   // define the Link template, representing a relationship
@@ -184,8 +175,8 @@ function init() {
       copiesArrayObjects: true,
       linkFromPortIdProperty: "fromPort",
       linkToPortIdProperty: "toPort",
-      nodeDataArray: [],
-      linkDataArray: []
+      nodeDataArray: nodeDataArray,
+      linkDataArray: linkDataArray
   });
 }
 
@@ -198,7 +189,7 @@ function loadFilterByRelationType() {
       if ($.inArray(this.type, appended) == -1) {
           // append
           appended.push(this.type)
-          $("#filter-by-relation-type").append($("<div>").text(this.type).prepend(
+          $("#filter-by-relation-type").append($("<div class='text-sm'>").text(this.type).prepend(
               $("<input>").attr({
                   'type': 'checkbox',
                   'checked': true,
@@ -241,10 +232,10 @@ function loadFilterByTableNames() {
       if ($.inArray(this.key, appended) == -1) {
           // append
           appended.push(this.key)
-          $("#filter-by-table-name").append($("<div>").text(this.key).prepend(
+          $("#filter-by-table-name").append($("<div class='text-sm'>").text(this.key).prepend(
               $("<input>").attr({
                   'type': 'checkbox',
-                  'checked': (this.key == "users" || this.key == "comments"),
+                  'checked': true,
                   'class': 'input-table-name-checkbox',
                   'name': 'subscribe-table-name',
                   "data-feed": this.key
@@ -297,32 +288,14 @@ function setCheckboxesForTableNames() {
   myDiagram.model.nodeDataArray = newNodeDataArray
   myDiagram.model.linkDataArray = newLinkDataArray
 }
-// jquery on checkbox check
 
-
-// create the model for the E-R diagram
-var nodeDataArray = [];
-
-function fetchNodeData() {
-  fetch('nodeData.json')
+function fetchERDData() {
+  fetch('erd.json')
       .then(
           response => {
               response.json().then(function(data) {
-                  nodeDataArray = data
-                  fetchLinkData()
-              });
-          }).catch(err => console.log('Fetch Error :-S', err));
-}
-fetchNodeData()
-
-var linkDataArray = [];
-
-function fetchLinkData() {
-  fetch('linkData.json')
-      .then(
-          response => {
-              response.json().then(function(data) {
-                  linkDataArray = data
+                  nodeDataArray = data.node_data
+                  linkDataArray = data.link_data
                   loadFilterByTableNames()
                   loadFilterByRelationType()
                   setCheckboxesForTableNames();
@@ -330,19 +303,6 @@ function fetchLinkData() {
               });
           }).catch(err => console.log('Fetch Error :-S', err));
 }
-
-
-
-
-// filter array of objects where value of key is equal to value
-function filterObjects(array, key, value) {
-  var result = [];
-  for (var i = 0; i < array.length; i++) {
-      if (array[i][key] == value) {
-          result.push(array[i]);
-      }
-  }
-  return result;
-}
+fetchERDData();
 
 window.addEventListener('DOMContentLoaded', init);

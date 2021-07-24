@@ -1,0 +1,635 @@
+{
+    "link_data": [
+        {
+            "from": "comments",
+            "to": "users",
+            "fromText": "1..1\nBT",
+            "toText": "",
+            "fromPort": "author_id",
+            "toPort": "id",
+            "type": "BelongsTo"
+        },
+        {
+            "from": "comments",
+            "to": "posts",
+            "fromText": "1..1\nBT",
+            "toText": "",
+            "fromPort": "post_id",
+            "toPort": "id",
+            "type": "BelongsTo"
+        },
+        {
+            "from": "comments",
+            "to": "likes",
+            "fromText": "1..N\nMM",
+            "toText": "",
+            "fromPort": "id",
+            "toPort": "likeable_id",
+            "type": "MorphMany"
+        },
+        {
+            "from": "likes",
+            "to": "likes",
+            "fromText": "1..1\nMT",
+            "toText": "",
+            "fromPort": "id",
+            "toPort": "likeable_id",
+            "type": "MorphTo"
+        },
+        {
+            "from": "likes",
+            "to": "users",
+            "fromText": "1..1\nBT",
+            "toText": "",
+            "fromPort": "author_id",
+            "toPort": "id",
+            "type": "BelongsTo"
+        },
+        {
+            "from": "media_libraries",
+            "to": "media",
+            "fromText": "1..N\nMM",
+            "toText": "",
+            "fromPort": "id",
+            "toPort": "model_id",
+            "type": "MorphMany"
+        },
+        {
+            "from": "posts",
+            "to": "users",
+            "fromText": "1..1\nBT",
+            "toText": "",
+            "fromPort": "author_id",
+            "toPort": "id",
+            "type": "BelongsTo"
+        },
+        {
+            "from": "posts",
+            "to": "media",
+            "fromText": "1..1\nBT",
+            "toText": "",
+            "fromPort": "thumbnail_id",
+            "toPort": "id",
+            "type": "BelongsTo"
+        },
+        {
+            "from": "posts",
+            "to": "comments",
+            "fromText": "1..N\nHM",
+            "toText": "",
+            "fromPort": "id",
+            "toPort": "post_id",
+            "type": "HasMany"
+        },
+        {
+            "from": "posts",
+            "to": "likes",
+            "fromText": "1..N\nMM",
+            "toText": "",
+            "fromPort": "id",
+            "toPort": "likeable_id",
+            "type": "MorphMany"
+        },
+        {
+            "from": "users",
+            "to": "posts",
+            "fromText": "1..N\nHM",
+            "toText": "",
+            "fromPort": "id",
+            "toPort": "author_id",
+            "type": "HasMany"
+        },
+        {
+            "from": "users",
+            "to": "comments",
+            "fromText": "1..N\nHM",
+            "toText": "",
+            "fromPort": "id",
+            "toPort": "author_id",
+            "type": "HasMany"
+        },
+        {
+            "from": "users",
+            "to": "likes",
+            "fromText": "1..N\nHM",
+            "toText": "",
+            "fromPort": "id",
+            "toPort": "author_id",
+            "type": "HasMany"
+        },
+        {
+            "from": "users",
+            "to": "notifications",
+            "fromText": "1..N\nMM",
+            "toText": "",
+            "fromPort": "id",
+            "toPort": "notifiable_id",
+            "type": "MorphMany"
+        },
+        {
+            "from": "users",
+            "to": "notifications",
+            "fromText": "1..N\nMM",
+            "toText": "",
+            "fromPort": "id",
+            "toPort": "notifiable_id",
+            "type": "MorphMany"
+        },
+        {
+            "from": "users",
+            "to": "notifications",
+            "fromText": "1..N\nMM",
+            "toText": "",
+            "fromPort": "id",
+            "toPort": "notifiable_id",
+            "type": "MorphMany"
+        }
+    ],
+    "node_data": [
+        {
+            "key": "comments",
+            "schema": [
+                {
+                    "name": "id",
+                    "isKey": true,
+                    "figure": "Hexagon",
+                    "color": "#be4b15",
+                    "info": "integer"
+                },
+                {
+                    "name": "author_id",
+                    "isKey": false,
+                    "figure": "Decision",
+                    "color": "#6ea5f8",
+                    "info": "integer"
+                },
+                {
+                    "name": "post_id",
+                    "isKey": false,
+                    "figure": "Decision",
+                    "color": "#6ea5f8",
+                    "info": "integer"
+                },
+                {
+                    "name": "content",
+                    "isKey": false,
+                    "figure": "Decision",
+                    "color": "#6ea5f8",
+                    "info": "text"
+                },
+                {
+                    "name": "posted_at",
+                    "isKey": false,
+                    "figure": "Decision",
+                    "color": "#6ea5f8",
+                    "info": "datetime"
+                },
+                {
+                    "name": "created_at",
+                    "isKey": false,
+                    "figure": "Decision",
+                    "color": "#6ea5f8",
+                    "info": "datetime"
+                },
+                {
+                    "name": "updated_at",
+                    "isKey": false,
+                    "figure": "Decision",
+                    "color": "#6ea5f8",
+                    "info": "datetime"
+                }
+            ]
+        },
+        {
+            "key": "likes",
+            "schema": [
+                {
+                    "name": "id",
+                    "isKey": true,
+                    "figure": "Hexagon",
+                    "color": "#be4b15",
+                    "info": "integer"
+                },
+                {
+                    "name": "author_id",
+                    "isKey": false,
+                    "figure": "Decision",
+                    "color": "#6ea5f8",
+                    "info": "integer"
+                },
+                {
+                    "name": "likeable_type",
+                    "isKey": false,
+                    "figure": "Decision",
+                    "color": "#6ea5f8",
+                    "info": "string"
+                },
+                {
+                    "name": "likeable_id",
+                    "isKey": false,
+                    "figure": "Decision",
+                    "color": "#6ea5f8",
+                    "info": "bigint"
+                },
+                {
+                    "name": "created_at",
+                    "isKey": false,
+                    "figure": "Decision",
+                    "color": "#6ea5f8",
+                    "info": "datetime"
+                },
+                {
+                    "name": "updated_at",
+                    "isKey": false,
+                    "figure": "Decision",
+                    "color": "#6ea5f8",
+                    "info": "datetime"
+                }
+            ]
+        },
+        {
+            "key": "media",
+            "schema": [
+                {
+                    "name": "id",
+                    "isKey": true,
+                    "figure": "Hexagon",
+                    "color": "#be4b15",
+                    "info": "integer"
+                },
+                {
+                    "name": "model_type",
+                    "isKey": false,
+                    "figure": "Decision",
+                    "color": "#6ea5f8",
+                    "info": "string"
+                },
+                {
+                    "name": "model_id",
+                    "isKey": false,
+                    "figure": "Decision",
+                    "color": "#6ea5f8",
+                    "info": "bigint"
+                },
+                {
+                    "name": "collection_name",
+                    "isKey": false,
+                    "figure": "Decision",
+                    "color": "#6ea5f8",
+                    "info": "string"
+                },
+                {
+                    "name": "name",
+                    "isKey": false,
+                    "figure": "Decision",
+                    "color": "#6ea5f8",
+                    "info": "string"
+                },
+                {
+                    "name": "file_name",
+                    "isKey": false,
+                    "figure": "Decision",
+                    "color": "#6ea5f8",
+                    "info": "string"
+                },
+                {
+                    "name": "mime_type",
+                    "isKey": false,
+                    "figure": "Decision",
+                    "color": "#6ea5f8",
+                    "info": "string"
+                },
+                {
+                    "name": "disk",
+                    "isKey": false,
+                    "figure": "Decision",
+                    "color": "#6ea5f8",
+                    "info": "string"
+                },
+                {
+                    "name": "size",
+                    "isKey": false,
+                    "figure": "Decision",
+                    "color": "#6ea5f8",
+                    "info": "bigint"
+                },
+                {
+                    "name": "manipulations",
+                    "isKey": false,
+                    "figure": "Decision",
+                    "color": "#6ea5f8",
+                    "info": "json"
+                },
+                {
+                    "name": "custom_properties",
+                    "isKey": false,
+                    "figure": "Decision",
+                    "color": "#6ea5f8",
+                    "info": "json"
+                },
+                {
+                    "name": "responsive_images",
+                    "isKey": false,
+                    "figure": "Decision",
+                    "color": "#6ea5f8",
+                    "info": "json"
+                },
+                {
+                    "name": "posted_at",
+                    "isKey": false,
+                    "figure": "Decision",
+                    "color": "#6ea5f8",
+                    "info": "datetime"
+                },
+                {
+                    "name": "order_column",
+                    "isKey": false,
+                    "figure": "Decision",
+                    "color": "#6ea5f8",
+                    "info": "integer"
+                },
+                {
+                    "name": "created_at",
+                    "isKey": false,
+                    "figure": "Decision",
+                    "color": "#6ea5f8",
+                    "info": "datetime"
+                },
+                {
+                    "name": "updated_at",
+                    "isKey": false,
+                    "figure": "Decision",
+                    "color": "#6ea5f8",
+                    "info": "datetime"
+                },
+                {
+                    "name": "uuid",
+                    "isKey": false,
+                    "figure": "Decision",
+                    "color": "#6ea5f8",
+                    "info": "string"
+                },
+                {
+                    "name": "conversions_disk",
+                    "isKey": false,
+                    "figure": "Decision",
+                    "color": "#6ea5f8",
+                    "info": "string"
+                }
+            ]
+        },
+        {
+            "key": "media_libraries",
+            "schema": [
+                {
+                    "name": "id",
+                    "isKey": true,
+                    "figure": "Hexagon",
+                    "color": "#be4b15",
+                    "info": "integer"
+                },
+                {
+                    "name": "created_at",
+                    "isKey": false,
+                    "figure": "Decision",
+                    "color": "#6ea5f8",
+                    "info": "datetime"
+                },
+                {
+                    "name": "updated_at",
+                    "isKey": false,
+                    "figure": "Decision",
+                    "color": "#6ea5f8",
+                    "info": "datetime"
+                }
+            ]
+        },
+        {
+            "key": "newsletter_subscriptions",
+            "schema": [
+                {
+                    "name": "id",
+                    "isKey": true,
+                    "figure": "Hexagon",
+                    "color": "#be4b15",
+                    "info": "integer"
+                },
+                {
+                    "name": "email",
+                    "isKey": false,
+                    "figure": "Decision",
+                    "color": "#6ea5f8",
+                    "info": "string"
+                },
+                {
+                    "name": "created_at",
+                    "isKey": false,
+                    "figure": "Decision",
+                    "color": "#6ea5f8",
+                    "info": "datetime"
+                },
+                {
+                    "name": "updated_at",
+                    "isKey": false,
+                    "figure": "Decision",
+                    "color": "#6ea5f8",
+                    "info": "datetime"
+                }
+            ]
+        },
+        {
+            "key": "posts",
+            "schema": [
+                {
+                    "name": "id",
+                    "isKey": true,
+                    "figure": "Hexagon",
+                    "color": "#be4b15",
+                    "info": "integer"
+                },
+                {
+                    "name": "author_id",
+                    "isKey": false,
+                    "figure": "Decision",
+                    "color": "#6ea5f8",
+                    "info": "integer"
+                },
+                {
+                    "name": "title",
+                    "isKey": false,
+                    "figure": "Decision",
+                    "color": "#6ea5f8",
+                    "info": "string"
+                },
+                {
+                    "name": "slug",
+                    "isKey": false,
+                    "figure": "Decision",
+                    "color": "#6ea5f8",
+                    "info": "string"
+                },
+                {
+                    "name": "content",
+                    "isKey": false,
+                    "figure": "Decision",
+                    "color": "#6ea5f8",
+                    "info": "text"
+                },
+                {
+                    "name": "posted_at",
+                    "isKey": false,
+                    "figure": "Decision",
+                    "color": "#6ea5f8",
+                    "info": "datetime"
+                },
+                {
+                    "name": "created_at",
+                    "isKey": false,
+                    "figure": "Decision",
+                    "color": "#6ea5f8",
+                    "info": "datetime"
+                },
+                {
+                    "name": "updated_at",
+                    "isKey": false,
+                    "figure": "Decision",
+                    "color": "#6ea5f8",
+                    "info": "datetime"
+                },
+                {
+                    "name": "thumbnail_id",
+                    "isKey": false,
+                    "figure": "Decision",
+                    "color": "#6ea5f8",
+                    "info": "integer"
+                }
+            ]
+        },
+        {
+            "key": "roles",
+            "schema": [
+                {
+                    "name": "id",
+                    "isKey": true,
+                    "figure": "Hexagon",
+                    "color": "#be4b15",
+                    "info": "integer"
+                },
+                {
+                    "name": "name",
+                    "isKey": false,
+                    "figure": "Decision",
+                    "color": "#6ea5f8",
+                    "info": "string"
+                },
+                {
+                    "name": "created_at",
+                    "isKey": false,
+                    "figure": "Decision",
+                    "color": "#6ea5f8",
+                    "info": "datetime"
+                },
+                {
+                    "name": "updated_at",
+                    "isKey": false,
+                    "figure": "Decision",
+                    "color": "#6ea5f8",
+                    "info": "datetime"
+                }
+            ]
+        },
+        {
+            "key": "tokens",
+            "schema": []
+        },
+        {
+            "key": "users",
+            "schema": [
+                {
+                    "name": "id",
+                    "isKey": true,
+                    "figure": "Hexagon",
+                    "color": "#be4b15",
+                    "info": "integer"
+                },
+                {
+                    "name": "name",
+                    "isKey": false,
+                    "figure": "Decision",
+                    "color": "#6ea5f8",
+                    "info": "string"
+                },
+                {
+                    "name": "email",
+                    "isKey": false,
+                    "figure": "Decision",
+                    "color": "#6ea5f8",
+                    "info": "string"
+                },
+                {
+                    "name": "password",
+                    "isKey": false,
+                    "figure": "Decision",
+                    "color": "#6ea5f8",
+                    "info": "string"
+                },
+                {
+                    "name": "remember_token",
+                    "isKey": false,
+                    "figure": "Decision",
+                    "color": "#6ea5f8",
+                    "info": "string"
+                },
+                {
+                    "name": "created_at",
+                    "isKey": false,
+                    "figure": "Decision",
+                    "color": "#6ea5f8",
+                    "info": "datetime"
+                },
+                {
+                    "name": "updated_at",
+                    "isKey": false,
+                    "figure": "Decision",
+                    "color": "#6ea5f8",
+                    "info": "datetime"
+                },
+                {
+                    "name": "provider",
+                    "isKey": false,
+                    "figure": "Decision",
+                    "color": "#6ea5f8",
+                    "info": "string"
+                },
+                {
+                    "name": "provider_id",
+                    "isKey": false,
+                    "figure": "Decision",
+                    "color": "#6ea5f8",
+                    "info": "string"
+                },
+                {
+                    "name": "registered_at",
+                    "isKey": false,
+                    "figure": "Decision",
+                    "color": "#6ea5f8",
+                    "info": "datetime"
+                },
+                {
+                    "name": "api_token",
+                    "isKey": false,
+                    "figure": "Decision",
+                    "color": "#6ea5f8",
+                    "info": "string"
+                },
+                {
+                    "name": "email_verified_at",
+                    "isKey": false,
+                    "figure": "Decision",
+                    "color": "#6ea5f8",
+                    "info": "datetime"
+                }
+            ]
+        }
+    ]
+}

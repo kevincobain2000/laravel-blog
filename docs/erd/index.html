@@ -9,21 +9,19 @@
       <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/gojs/2.1.46/go.js"></script>
       <script src="./erd.js" defer></script>
-      <!-- Copyright 1998-2021 by Northwoods Software Corporation. -->
       <title>Entity Relationship</title>
    </head>
    <body>
       <div class="md:flex flex-col md:flex-row md:min-h-screen w-full " style="margin-top: 40px;">
         <div id="navSide" class="flex flex-col w-full md:w-48 text-gray-700 bg-white flex-shrink-0">
-            <b>Filter by Relation Type</b>
-            <div>
-                <input type="checkbox" id="input-relation-type-checkbox-check-all">check all
+            <b class="text-sm">Filter by Relation Type</b>
+            <div class="text-sm">
+                <input type="checkbox" class="text-sm" id="input-relation-type-checkbox-check-all">check all
             </div>
 
             <div id="filter-by-relation-type"></div>
-            <b>Filter by Table Name</b>
-
-            <div>
+            <b class="text-sm">Filter by Table Name</b>
+            <div class="text-sm">
                 <input type="checkbox" id="input-table-names-checkbox-check-all">check all
             </div>
             <div id="filter-by-table-name"></div>
