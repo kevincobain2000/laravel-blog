@@ -7073,16 +7073,16 @@
         },
         {
             "name": "kevincobain2000/laravel-erd",
-            "version": "1.0",
+            "version": "1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kevincobain2000/laravel-erd.git",
-                "reference": "eb46feb215a34a44d07a6e64116f20d38ed34259"
+                "reference": "1b0cc71b7956be3098c8ee44fcc5115b698c9186"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kevincobain2000/laravel-erd/zipball/eb46feb215a34a44d07a6e64116f20d38ed34259",
-                "reference": "eb46feb215a34a44d07a6e64116f20d38ed34259",
+                "url": "https://api.github.com/repos/kevincobain2000/laravel-erd/zipball/1b0cc71b7956be3098c8ee44fcc5115b698c9186",
+                "reference": "1b0cc71b7956be3098c8ee44fcc5115b698c9186",
                 "shasum": ""
             },
             "require": {
@@ -7102,7 +7102,10 @@
                 "laravel": {
                     "providers": [
                         "Kevincobain2000\\LaravelERD\\LaravelERDServiceProvider"
-                    ]
+                    ],
+                    "aliases": {
+                        "LaravelERD": "Kevincobain2000\\LaravelERD\\LaravelERDFacade"
+                    }
                 }
             },
             "autoload": {
@@ -7130,9 +7133,9 @@
             ],
             "support": {
                 "issues": "https://github.com/kevincobain2000/laravel-erd/issues",
-                "source": "https://github.com/kevincobain2000/laravel-erd/tree/1.0"
+                "source": "https://github.com/kevincobain2000/laravel-erd/tree/1.1"
             },
-            "time": "2021-07-24T15:50:17+00:00"
+            "time": "2021-08-10T02:07:54+00:00"
         },
         {
             "name": "laravel/homestead",
